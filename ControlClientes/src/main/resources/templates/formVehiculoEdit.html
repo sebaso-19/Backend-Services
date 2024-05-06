@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Datos del vehiculo </title>
+    <meta charset="UTF-8"/>
+  </head>
+  <body>
+      <header th:replace="layout/plantilla :: header"></header>
+      <h2>Datos de la persona </h2>
+      <a th:href="@{/}">Regresar</a>
+      <br/>
+      <form th:action="@{/guardarVehiculo}" method="post" th:object="${vehiculo}"> 
+          <input type="hidden" name="placa" th:field="*{placa}">
+      <br/>  
+      <label for="marca">marca</label>
+      <input type="text" name="marca" th:field="*{marca}"/> 
+      <span th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}">Error en el marca</span>
+      <br/>
+      <label for="email">modelo</label>
+      <input type="text" name="modelo" th:field="*{modelo}"/> 
+      <span th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}">Error en el modelo</span>
+      <br/>
+      <label for="capacidadCarga">capacidadCarga</label>
+      <input type="tel" name="capacidadCarga" th:field="*{capacidadCarga}"/>
+      <span th:if="${#fields.hasErrors('capacidadCarga')}" th:errors="*{capacidadCarga}">Error en la capacidad de Carga</span>
+      <br/>
+      <label for="direccion">tipoCarroceria</label>
+      <input type="dir" name="tipoCarroceria" th:field="*{tipoCarroceria}"/>
+      <span th:if="${#fields.hasErrors('tipoCarroceria')}" th:errors="*{tipoCarroceria}">Error en el tipo de Carroceria</span>
+      <br/>
+      <input type="submit" name="guardarVehiculo" value="GuardarVehiculo"/>
+      </form>
+       <footer th:replace="layout/plantilla :: footer"></footer>
+  </body>
+</html>
